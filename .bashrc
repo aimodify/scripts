@@ -14,10 +14,9 @@ export HISTSIZE=500000
 
 export HISTIGNORE="ls:cd:sudo:history"
 
-export HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
-#save every terminal window to ONE file
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r;"
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 #something more vith ls:
 alias ll='ls -laX --group-directories-first'
